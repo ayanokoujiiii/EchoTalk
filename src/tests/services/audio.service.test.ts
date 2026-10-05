@@ -81,14 +81,14 @@ describe('AudioService', () => {
             app.isRecordingEnabled = true;
             (navigator as any).mediaDevices = null;
             await audioService.initializeMicrophoneStream();
-            expect($('#feedback-text').html()).toContain('does not support audio recording');
+            expect($('#feedback-text').html()).toContain('پشتیبانی نمی‌کنه');
         });
 
         it('should handle microphone permission denial', async () => {
             app.isRecordingEnabled = true;
             (navigator.mediaDevices.getUserMedia as any).mockRejectedValue(new Error('Permission denied'));
             await audioService.initializeMicrophoneStream();
-            expect($('#feedback-text').html()).toContain('Could not access microphone');
+            expect($('#feedback-text').html()).toContain('نمی‌تونم به میکروفون');
             expect(app.isRecordingEnabled).toBe(false);
         });
 
@@ -196,7 +196,7 @@ describe('AudioService', () => {
             // Check that the start method was called and UI feedback is shown
             expect(mediaRecorderInstance.start).toHaveBeenCalled();
             expect($('#feedback-text').hasClass('recording-text-indicator')).toBe(true);
-            expect($('#feedback-text').html()).toBe('Speak aloud...');
+            expect($('#feedback-text').html()).toBe('بلند بخون...');
         });
 
         // This test ensures that recording does not start if the MediaRecorder

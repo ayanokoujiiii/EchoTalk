@@ -151,7 +151,7 @@ describe('UiService', () => {
 
         expect(repOptions.length).toBeGreaterThan(1);
         expect(repOptions.first().val()).toBe('0');
-        expect(repOptions.first().text()).toContain('Auto');
+        expect(repOptions.first().text()).toContain('خودکار');
         expect(repOptions.eq(4).val()).toBe('5');
     });
 
@@ -186,7 +186,7 @@ describe('UiService', () => {
         uiService.setupPracticeUI();
 
         expect($('#userInput').parent().hasClass('d-none')).toBe(false);
-        expect($('#checkBtn').text()).toBe('Check/Skip');
+        expect($('#checkBtn').text()).toBe('بررسی / رد شدن');
     });
 
     // Verifies: word actions modal is populated with word-specific data and shown.
@@ -197,7 +197,7 @@ describe('UiService', () => {
 
         const modalInstance = Modal.getOrCreateInstance(document.getElementById('wordActionsModal')!);
 
-        expect($('#wordActionsModalLabel').text()).toBe('Word: play');
+        expect($('#wordActionsModalLabel').text()).toBe('کلمه: play');
         expect($('#searchMeaningLink').attr('href')).toContain('meaning:+play');
         expect(modalInstance.show).toHaveBeenCalled();
     });

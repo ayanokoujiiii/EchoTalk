@@ -67,7 +67,7 @@ describe('AiService', () => {
                 app.utilService.copyTextToClipboard = vi.fn().mockResolvedValue(false);
                 const button = document.createElement('button');
                 await (app.aiService as any)[method](button);
-                expect(window.alert).toHaveBeenCalledWith("Could not copy the prompt to your clipboard.");
+                expect(window.alert).toHaveBeenCalledWith("پرامپت توی حافظه کپی نشد.");
             });
 
             it(`should not proceed if sentence is empty for ${method}`, async () => {
@@ -94,7 +94,7 @@ describe('AiService', () => {
             window.modalRecordings = {};
             const element = $('.pronunciation-check')[0];
             await app.aiService.getPronunciationAccuracy(element);
-            expect(htmlSpy).toHaveBeenCalledWith(expect.stringContaining('Audio file not found'));
+            expect(htmlSpy).toHaveBeenCalledWith(expect.stringContaining('فایل صوتی پیدا نشد'));
         });
 
         it('should successfully fetch and render accuracy results', async () => {
@@ -114,7 +114,7 @@ describe('AiService', () => {
             const element = $('.pronunciation-check')[0];
             await app.aiService.getPronunciationAccuracy(element);
 
-            expect(htmlSpy).toHaveBeenCalledWith(expect.stringContaining('Accuracy Analysis'));
+            expect(htmlSpy).toHaveBeenCalledWith(expect.stringContaining('تحلیل دقت'));
             expect(htmlSpy).toHaveBeenCalledWith(expect.stringContaining('95%'));
         });
 
@@ -127,7 +127,7 @@ describe('AiService', () => {
             const element = $('.pronunciation-check')[0];
             await app.aiService.getPronunciationAccuracy(element);
 
-            expect(htmlSpy).toHaveBeenCalledWith(expect.stringContaining('Error: Your audio could not be analyzed'));
+            expect(htmlSpy).toHaveBeenCalledWith(expect.stringContaining('خطا: صدات تحلیل نشد'));
         });
     });
 
@@ -139,7 +139,7 @@ describe('AiService', () => {
             await app.aiService.prepareForAIAnalysis(element);
             expect(copySpy).toHaveBeenCalled();
             expect(downloadSpy).toHaveBeenCalled();
-            expect($('#aiInstructionsModalBody').html()).toContain("All set!");
+            expect($('#aiInstructionsModalBody').html()).toContain("همه‌چیز آماده‌ست!");
         });
     });
 
@@ -161,7 +161,7 @@ describe('AiService', () => {
             const element = $('.pronunciation-check')[0];
             (app.aiService as any).downloadUserAudio(element);
             // This now matches the actual error message from the last run
-            expect(window.alert).toHaveBeenCalledWith("Sorry, the audio file could not be found.");
+            expect(window.alert).toHaveBeenCalledWith("متأسفم، فایل صوتی پیدا نشد.");
         });
     });
 
@@ -179,7 +179,7 @@ describe('AiService', () => {
             const badResult = { real_transcripts: 'hi', is_letter_correct_all_words: '', pronunciation_accuracy: 80 };
             (app.aiService as any).renderAccuracyResult(badResult, container);
             // Should render a warning message
-            expect(container.html()).toContain('unexpected response');
+            expect(container.html()).toContain('پاسخ غیرمنتظره');
         });
 
         it('should render accuracy with mismatched word lengths', () => {
@@ -191,7 +191,7 @@ describe('AiService', () => {
             };
             (app.aiService as any).renderAccuracyResult(badResult, container);
             // Should render warning for mismatch
-            expect(container.html()).toContain('Could not parse');
+            expect(container.html()).toContain('نتونستم داده دقت');
         });
 
         it('should show error if copyAIPrompt fails', async () => {
@@ -199,7 +199,7 @@ describe('AiService', () => {
             const element = document.createElement('button');
             await (app.aiService as any).copyAIPrompt(element);
             // Should trigger alert since copy failed
-            expect(window.alert).toHaveBeenCalledWith("Could not copy the prompt to your clipboard. Please try again.");
+            expect(window.alert).toHaveBeenCalledWith("پرامپت توی حافظه کپی نشد. لطفاً دوباره امتحان کن.");
         });
 
         it('should do nothing if no API key is provided', async () => {
@@ -229,7 +229,7 @@ describe('AiService', () => {
             await (app.aiService as any).copyAIPrompt(button);
 
             // After copy it should say "Copied!"
-            expect(button.innerHTML).toContain('Copied!');
+            expect(button.innerHTML).toContain('کپی شد!');
 
             // Fast-forward timers
             vi.advanceTimersByTime(2000);

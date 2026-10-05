@@ -107,7 +107,7 @@ describe('DataService', () => {
         await displayPromise;
 
         // Check if the UI is updated with the placeholder text.
-        expect($('#practicesList').html()).toContain('No practices recorded yet');
+        expect($('#practicesList').html()).toContain('هنوز تمرینی ثبت نشده');
     });
 
     /**
@@ -132,8 +132,8 @@ describe('DataService', () => {
         // There should be two accordion items, one for each language.
         expect(practicesList.find('.accordion-item').length).toBe(2);
         // Check if language names are present.
-        expect(practicesList.html()).toContain('English (US) Sentences');
-        expect(practicesList.html()).toContain('Dutch (NL) Sentences');
+        expect(practicesList.html()).toContain('جمله‌های English (US)');
+        expect(practicesList.html()).toContain('جمله‌های Dutch (NL)');
     });
 
     describe('Streak Calculation (_calculateStreak)', () => {
@@ -250,8 +250,8 @@ describe('DataService', () => {
             request.onsuccess();
             await promise;
 
-            expect($('#myStreakModalLabel').text()).toBe("Welcome!");
-            expect($('#streak-motivational-text').text()).toBe("Ready to build your streak? Complete your first practice session today!");
+            expect($('#myStreakModalLabel').text()).toBe("خوش اومدی!");
+            expect($('#streak-motivational-text').text()).toBe("آماده‌ای رکوردت رو بسازی؟ امروز اولین جلسه تمرينت رو کامل کن!");
         });
 
         /**
@@ -272,7 +272,7 @@ describe('DataService', () => {
             request.onsuccess();
             await promise;
 
-            expect($('#myStreakModalLabel').text()).toBe("Welcome Back!");
+            expect($('#myStreakModalLabel').text()).toBe("خوش برگشتی!");
         });
 
         /**
@@ -293,7 +293,7 @@ describe('DataService', () => {
             request.onsuccess();
             await promise;
 
-            expect($('#myStreakModalLabel').text()).toBe("Congratulations!");
+            expect($('#myStreakModalLabel').text()).toBe("آفرین!");
         });
     });
 });
