@@ -198,3 +198,4 @@ Fork the repo, make your changes, and open a pull request.
 ## 📄 License
 
 MIT License – see [LICENSE](./LICENSE).
+
