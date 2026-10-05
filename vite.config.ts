@@ -15,7 +15,7 @@ const getBuildInfo = () => {
     let commitUrl = '';
     try {
         const commitHash = execSync('git rev-parse HEAD').toString().trim();
-        commitUrl = `https://github.com/alisolphp/EchoTalk/commit/${commitHash}`;
+        commitUrl = `https://github.com/ayanokoujiiii/EchoTalk/commit/${commitHash}`;
     } catch {
         commitUrl = 'unknown';
     }
