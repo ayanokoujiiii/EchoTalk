@@ -9,6 +9,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     padding-bottom: 70px;
+    font-family: 'Vazirmatn', Tahoma, 'Segoe UI', sans-serif;
 }
 
 #sampleSentence span {
