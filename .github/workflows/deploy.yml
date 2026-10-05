@@ -118,9 +118,3 @@ jobs:
           command -v zip >/dev/null 2>&1 || sudo apt-get update && sudo apt-get install -y zip
           zip -r dist.zip ./dist
 
-      - name: Deploy to shared hosting
-        run: |
-          curl -X POST \
-            -F "file=@dist.zip" \
-            -F "token=${{ secrets.DEPLOYER_TOKEN }}" \
-            "${{ secrets.DEPLOYER_URL }}"
