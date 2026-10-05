@@ -67,7 +67,7 @@ export class AudioService {
             return;
         }
         if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-            $('#feedback-text').html('<div class="incorrect">Your browser does not support audio recording.</div>');
+            $('#feedback-text').html('<div class="incorrect">مرورگرت از ضبط صدا پشتیبانی نمی‌کنه.</div>');
             console.error("Audio recording is not supported.");
             return;
         }
@@ -97,7 +97,7 @@ export class AudioService {
             };
         } catch (err) {
             console.error('Error accessing microphone:', err);
-            $('#feedback-text').html('<div class="incorrect">Could not access microphone. Please grant permission.</div>');
+            $('#feedback-text').html('<div class="incorrect">نمی‌تونم به میکروفون دسترسی پیدا کنم. لطفاً اجازه بده.</div>');
             this.app.isRecordingEnabled = false;
             $('#recordToggle').prop('checked', false);
         }
@@ -130,7 +130,7 @@ export class AudioService {
     public async startRecording(): Promise<void> {
         if (this.mediaRecorder && this.mediaRecorder.state === 'inactive') {
             this.mediaRecorder.start();
-            $('#feedback-text').html('Speak aloud...').addClass('recording-text-indicator');
+            $('#feedback-text').html('بلند بخون...').addClass('recording-text-indicator');
             this.monitorAudioLevel();
         }
     }

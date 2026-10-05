@@ -157,7 +157,7 @@ export class UiService {
         if ($repsSelect.find('option').length > 0) {
             return;
         }
-        $repsSelect.append(`<option value="0">🔁 Auto (recommended)</option>`);
+        $repsSelect.append(`<option value="0">🔁 خودکار (پیشنهاد می‌شود)</option>`);
         for (let i = 1; i <= 20; i++) {
             if ([1, 2, 3, 5, 10, 20].includes(i)) {
                 $repsSelect.append(`<option value="${i}">${i}</option>`);
@@ -208,21 +208,21 @@ export class UiService {
         const checkBtn = $('#checkBtn');
 
         if (this.app.practiceMode === 'check') {
-            $('#instructionText').text('Now it’s your turn. Tap the mic icon on your keyboard and speak the word.').show();
+            $('#instructionText').text('حالا نوبت توئه. روی آیکون میکروفون کیبوردت بزن و کلمه رو بگو.').show();
             userInputGroup.show();
             $('#userInput').trigger('focus');
-            checkBtn.text('Check/Skip').show();
+            checkBtn.text('بررسی / رد شدن').show();
         } else if (this.app.practiceMode === 'auto-skip') {
-            $('#instructionText').text('Listen and repeat. The next phrase will play automatically.').show();
+            $('#instructionText').text('گوش بده و تکرار کن. عبارت بعدی خودش پخش می‌شه.').show();
             userInputGroup.hide();
-            checkBtn.html('<i class="bi bi-hourglass-split"></i> Auto-advancing...').show();
+            checkBtn.html('<i class="bi bi-hourglass-split"></i> در حال پیشروی خودکار...').show();
             checkBtn.addClass('auto-skip-progress');
             checkBtn.removeClass('loading');
             checkBtn.css('animation-duration', '');
         } else { // 'skip' mode
-            $('#instructionText').text('Listen, repeat to yourself, then click "Next Step".').show();
+            $('#instructionText').text('گوش بده، با خودت تکرار کن، بعد «مرحله بعد» رو بزن.').show();
             userInputGroup.hide();
-            checkBtn.html('<i class="bi bi-skip-forward-fill"></i> Next Step').show();
+            checkBtn.html('<i class="bi bi-skip-forward-fill"></i> مرحله بعد').show();
         }
     }
 
@@ -234,7 +234,7 @@ export class UiService {
         const word = $(element).text().trim().replace(/[.,!?;:"'(){}[\]]/g, '');
         if (!word) return;
 
-        $('#wordActionsModalLabel').text(`Word: ${word}`);
+        $('#wordActionsModalLabel').text(`کلمه: ${word}`);
 
         $('#playWordBtn').off('click').on('click', () => {
             this.app.audioService.speak(word, null, 0.7, this.app.lang);
@@ -298,7 +298,7 @@ export class UiService {
         `);
             newWin.document.close();
         } else {
-            alert("Popup blocked! Please allow popups for this site.");
+            alert("پاپ‌آپ مسدود شد! لطفاً اجازه پاپ‌آپ برای این سایت رو فعال کن.");
         }
     }
 
@@ -311,7 +311,7 @@ export class UiService {
     public showCopySuccessFeedback(element: HTMLElement, url: string): void {
         const $element = $(element);
         const originalHtml = $element.html();
-        $element.html('<i class="bi bi-check-lg"></i> Copied!');
+        $element.html('<i class="bi bi-check-lg"></i> کپی شد!');
         $element.prop('disabled', true);
         setTimeout(() => {
             $element.html(originalHtml);

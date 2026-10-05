@@ -60,7 +60,7 @@ export class AiService {
         if (success) {
             this.app.uiService.showCopySuccessFeedback(element, 'https://chatgpt.com/');
         } else {
-            alert("Could not copy the prompt to your clipboard.");
+            alert("پرامپت توی حافظه کپی نشد.");
         }
     }
 
@@ -79,7 +79,7 @@ export class AiService {
         if (success) {
             this.app.uiService.showCopySuccessFeedback(element, 'https://chatgpt.com/');
         } else {
-            alert("Could not copy the prompt to your clipboard.");
+            alert("پرامپت توی حافظه کپی نشد.");
         }
     }
 
@@ -98,7 +98,7 @@ export class AiService {
         if (success) {
             this.app.uiService.showCopySuccessFeedback(element, 'https://chatgpt.com/');
         } else {
-            alert("Could not copy the prompt to your clipboard.");
+            alert("پرامپت توی حافظه کپی نشد.");
         }
     }
 
@@ -117,7 +117,7 @@ export class AiService {
         if (success) {
             this.app.uiService.showCopySuccessFeedback(element, 'https://chatgpt.com/');
         } else {
-            alert("Could not copy the prompt to your clipboard.");
+            alert("پرامپت توی حافظه کپی نشد.");
         }
     }
 
@@ -135,7 +135,7 @@ export class AiService {
         if (success) {
             this.app.uiService.showCopySuccessFeedback(element, 'https://chatgpt.com/');
         } else {
-            alert("Could not copy the prompt to your clipboard.");
+            alert("پرامپت توی حافظه کپی نشد.");
         }
     }
 
@@ -150,12 +150,12 @@ export class AiService {
         const record = window.modalRecordings[sentence]?.[index];
         const $resultContainer = $element.closest('li.list-group-item').find('.accuracy-result-container');
         if (!record || !record.audio) {
-            $resultContainer.html('<div class="alert alert-danger p-2">Audio file not found.</div>').slideDown();
+            $resultContainer.html('<div class="alert alert-danger p-2">فایل صوتی پیدا نشد.</div>').slideDown();
             return;
         }
 
         $element.prop('disabled', true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
-        $resultContainer.html('<div class="text-center text-muted">Analyzing pronunciation, please wait...</div>').slideDown();
+        $resultContainer.html('<div class="text-center text-muted">در حال تحلیل تلفظ، لطفاً صبر کن...</div>').slideDown();
 
         try {
             const formData = new FormData();
@@ -177,7 +177,7 @@ export class AiService {
             this.renderAccuracyResult(result, $resultContainer);
         } catch (error) {
             console.error('Error checking pronunciation accuracy:', error);
-            $resultContainer.html(`<div class="alert alert-danger p-2">Error: Your audio could not be analyzed. Please try again with another recording.</div>`);
+            $resultContainer.html(`<div class="alert alert-danger p-2">خطا: صدات تحلیل نشد. با یه ضبط دیگه دوباره امتحان کن.</div>`);
         } finally {
             $element.prop('disabled', false).html('<i class="bi bi-magic"></i> Fast <span class="text-nowrap">AI Analyze</span>');
         }
@@ -191,14 +191,14 @@ export class AiService {
      */
     private renderAccuracyResult(result: any, $container: JQuery<HTMLElement>): void {
         if (!result.real_transcripts || !result.is_letter_correct_all_words || !result.pronunciation_accuracy) {
-            $container.html('<div class="alert alert-warning p-2">The server returned an unexpected response.</div>');
+            $container.html('<div class="alert alert-warning p-2">سرور یه پاسخ غیرمنتظره برگردوند.</div>');
             return;
         }
 
         const words = result.real_transcripts.split(' ');
         const correctness = result.is_letter_correct_all_words.trim().split(' ');
         if (words.length !== correctness.length) {
-            $container.html('<div class="alert alert-warning p-2">Could not parse the accuracy data from the server.</div>');
+            $container.html('<div class="alert alert-warning p-2">نتونستم داده دقت رو از سرور بخونم.</div>');
             return;
         }
 
@@ -213,12 +213,12 @@ export class AiService {
 
         const resultHtml = `
             <div class="d-flex justify-content-between align-items-center">
-                <h6 class="mb-0">Accuracy Analysis</h6>
-                <div><strong>Overall Score:</strong> <span class="badge bg-info">${overallScore}%</span></div>
+                <h6 class="mb-0">تحلیل دقت</h6>
+                <div><strong>نمره کلی:</strong> <span class="badge bg-info">${overallScore}%</span></div>
             </div>
             <p class="fs-5 fw-bold mt-2 mb-1">${coloredSentenceHtml}</p>
         
-            <p class="text-muted mb-0"><small><strong>Detected:</strong> <em>${detectedTranscript}</em></small></p>`;
+            <p class="text-muted mb-0"><small><strong>شنیده شد:</strong> <em>${detectedTranscript}</em></small></p>`;
         $container.html(resultHtml);
     }
 
@@ -234,23 +234,23 @@ export class AiService {
         const sentence = $(element).data('sentence') as string;
 
         const modalBodyContent = `
-            <p class="fw-bold">All set! Here's what just happened:</p>
+            <p class="fw-bold">همه‌چیز آماده‌ست! این اتفاقا افتاد:</p>
             <ul class="list-group list-group-flush mb-3">
                 <li class="list-group-item bg-transparent">
-                    <i class="bi bi-check-circle-fill text-success"></i> <strong>Your voice recording</strong> for the sentence below was successfully <strong>downloaded</strong>:
+                    <i class="bi bi-check-circle-fill text-success"></i> <strong>ضبط صدات</strong> برای جمله زیر با موفقیت <strong>دانلود</strong> شد:
                     <br><small class="text-muted"><em>"${sentence}"</em></small>
                 </li>
                 <li class="list-group-item bg-transparent">
-                    <i class="bi bi-check-circle-fill text-success"></i> The analysis prompt for <strong>your recording</strong> was copied to your <strong>clipboard</strong>.
+                    <i class="bi bi-check-circle-fill text-success"></i> پرامپت تحلیل <strong>ضبطت</strong> توی <strong>حافظه</strong> کپی شد.
                 </li>
             </ul>
             <hr>
-            <p class="fw-bold">What's next?</p>
+            <p class="fw-bold">قدم بعدی چیه؟</p>
             <p>
-                Simply go to the <a href="https://gemini.google.com/" target="_blank">Gemini website</a>, upload <strong>your downloaded voice recording</strong> as an attachment, and paste the copied prompt into the chat.
+                کافیه بری به <a href="https://gemini.google.com/" target="_blank">سایت Gemini</a>، <strong>فایل ضبط‌شده‌ت</strong> رو به‌عنوان پیوست آپلود کنی و پرامپت کپی‌شده رو توی چت بچسبونی.
             </p>
             <p class="mt-3">
-                Enjoy the free, fast, accurate, and targeted AI analysis to improve your <strong>pronunciation and fluency</strong>!
+                از تحلیل رایگان، سریع، دقیق و هدفمند هوش مصنوعی برای بهتر شدن <strong>تلفظ و روانی حرف زدنت</strong> لذت ببر!
             </p>
         `;
 
@@ -283,7 +283,7 @@ export class AiService {
             URL.revokeObjectURL(audioUrl);
         } else {
             console.error("Could not find audio record to download.");
-            alert("Sorry, the audio file could not be found.");
+            alert("متأسفم، فایل صوتی پیدا نشد.");
         }
     }
 
@@ -299,14 +299,14 @@ export class AiService {
         if (success) {
             const $element = $(element);
             const originalHtml = $element.html();
-            $element.html('<i class="bi bi-check-lg"></i> Copied!');
+            $element.html('<i class="bi bi-check-lg"></i> کپی شد!');
             $element.prop('disabled', true);
             setTimeout(() => {
                 $element.html(originalHtml);
                 $element.prop('disabled', false);
             }, 2000);
         } else {
-            alert("Could not copy the prompt to your clipboard. Please try again.");
+            alert("پرامپت توی حافظه کپی نشد. لطفاً دوباره امتحان کن.");
         }
     }
 }

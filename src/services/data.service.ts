@@ -94,7 +94,7 @@ export class DataService {
         $list.empty();
 
         if (Object.keys(grouped).length === 0) {
-            $list.html('<p class="text-center text-muted">No recordings found yet. Enable "Record my voice" and start practicing!</p>');
+            $list.html('<p class="text-center text-muted">هنوز ضبطی نیست. «ضبط صدای من» رو فعال کن و تمرین رو شروع کن!</p>');
         } else {
             const sortedSentences = Object.keys(grouped).sort((a, b) => {
                 const lastA = Math.max(...grouped[a].map(r => r.timestamp?.getTime() || 0));
@@ -115,7 +115,7 @@ export class DataService {
                             <div class="w-100 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
                                <span class="fw-bold mb-1 mb-sm-0">${truncated}</span>
                                 <div class="d-flex align-items-center">
-                                    <span class="badge bg-secondary me-2">${count} recording${count > 1 ? 's' : ''}</span>
+                                    <span class="badge bg-secondary me-2">${count} ضبط</span>
                                     <small class="text-muted">${lastRecTime.toLocaleString()}</small>
                                 </div>
                             </div>
@@ -127,35 +127,35 @@ export class DataService {
                                ${recordings.map((rec, index) => `
                                     <li class="list-group-item">
                                         <div class="d-flex justify-content-between align-items-center flex-wrap">
-                                            <span class="mb-2 mb-md-0">Recording from ${rec.timestamp?.toLocaleString() || 'an old date'}</span>
+                                            <span class="mb-2 mb-md-0">ضبط‌شده در ${rec.timestamp?.toLocaleString() || 'تاریخ نامشخص'}</span>
                                             <div class="row g-2 justify-content-center">
                                                 <div class="col-6 col-md-auto">
                                                     <button class="btn btn-sm btn-success play-bot-audio w-100" data-sentence="${sentence}" data-lang="${rec.lang}">
-                                                        <i class="bi bi-robot"></i> Play Bot
+                                                        <i class="bi bi-robot"></i> پخش ربات
                                                     </button>
                                                 </div>
                                                 <div class="col-6 col-md-auto">
                                                     <button class="btn btn-sm btn-primary play-user-audio w-100" data-sentence="${sentence}" data-index="${index}">
-                                                        <i class="bi bi-person-fill"></i> Play Mine
+                                                        <i class="bi bi-person-fill"></i> پخش صدای من
                                                     </button>
                                                 </div>
                                                 ${rec.lang === 'en-US' && this.app.spellCheckerIsAvailable ?
                                                 `
                                                     <div class="col-6 col-md-auto">
-                                                        <button class="btn btn-sm btn-info check-accuracy-btn w-100" data-sentence="${sentence}" data-index="${index}" title="Check pronunciation accuracy">
-                                                            <i class="bi bi-magic"></i> Fast <span class="text-nowrap">AI Analyze</span>
+                                                        <button class="btn btn-sm btn-info check-accuracy-btn w-100" data-sentence="${sentence}" data-index="${index}" title="بررسی دقت تلفظ">
+                                                            <i class="bi bi-magic"></i> تحلیل سریع <span class="text-nowrap">هوش مصنوعی</span>
                                                         </button>
                                                     </div>
                                                     <div class="col-6 col-md-auto">
-                                                        <button class="btn btn-sm btn-warning prepare-for-ai w-100" title="Prepare file and prompt for analysis by AI" data-sentence="${sentence}" data-index="${index}">
-                                                            <i class="bi bi-magic"></i> Full <span class="text-nowrap">AI Analyze</span>
+                                                        <button class="btn btn-sm btn-warning prepare-for-ai w-100" title="آماده‌سازی فایل و پرامپت برای تحلیل با هوش مصنوعی" data-sentence="${sentence}" data-index="${index}">
+                                                            <i class="bi bi-magic"></i> تحلیل کامل <span class="text-nowrap">هوش مصنوعی</span>
                                                         </button>
                                                     </div>
                                                 ` : 
                                                 `
                                                     <div class="col-12 col-md-auto">
-                                                        <button class="btn btn-sm btn-warning prepare-for-ai w-100" title="Prepare file and prompt for analysis by AI" data-sentence="${sentence}" data-index="${index}">
-                                                            <i class="bi bi-magic"></i> Comprehensive <span class="text-nowrap">AI Analyze</span>
+                                                        <button class="btn btn-sm btn-warning prepare-for-ai w-100" title="آماده‌سازی فایل و پرامپت برای تحلیل با هوش مصنوعی" data-sentence="${sentence}" data-index="${index}">
+                                                            <i class="bi bi-magic"></i> تحلیل جامع <span class="text-nowrap">هوش مصنوعی</span>
                                                         </button>
                                                     </div>
                                                 `
@@ -192,7 +192,7 @@ export class DataService {
             $practicesList.empty();
 
             if (practices.length === 0) {
-                $practicesList.html('<p class="text-center text-muted">No practices recorded yet. Start a session to see your progress!</p>');
+                $practicesList.html('<p class="text-center text-muted">هنوز تمرینی ثبت نشده. یه جلسه تمرین شروع کن تا پیشرفتت رو ببینی!</p>');
             } else {
                 const groupedByLang: Record<string, Practice[]> = practices.reduce((acc, p) => {
                     (acc[p.lang] = acc[p.lang] || []).push(p);
@@ -219,14 +219,14 @@ export class DataService {
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading-${uniqueId}">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${uniqueId}" aria-expanded="false">
-                                        ${langName} Sentences
+                                        جمله‌های ${langName}
                                     </button>
                                 </h2>
                                 <div id="collapse-${uniqueId}" class="accordion-collapse collapse" data-bs-parent="#${accordionId}">
                                     <div class="accordion-body">`;
                         practicesForLang.forEach(p => {
-                            const lastPracticedDate = p.practiceHistory && p.practiceHistory.length > 0 ? p.practiceHistory[p.practiceHistory.length - 1] : 'Never';
-                            const formattedDate = lastPracticedDate !== 'Never' ? lastPracticedDate.toLocaleString() : lastPracticedDate;
+                            const lastPracticedDate = p.practiceHistory && p.practiceHistory.length > 0 ? p.practiceHistory[p.practiceHistory.length - 1] : 'هرگز';
+                            const formattedDate = lastPracticedDate !== 'هرگز' ? lastPracticedDate.toLocaleString() : lastPracticedDate;
                             const truncatedSentence = this.app.utilService.truncateSentence(p.sentence);
                             const sentenceAttr = p.sentence.replace(/"/g, '&quot;');
                             accordionHtml += `
@@ -236,13 +236,13 @@ export class DataService {
                                             <div class="flex-grow-1 me-3">
                                                 <p class="card-title fw-bold mb-1">"${truncatedSentence}"</p>
                                                 <p class="card-text mb-1">
-                                                    <span class="badge bg-info">Practiced: <strong>${p.count}</strong> time(s)</span>
+                                                    <span class="badge bg-info">تمرین شده: <strong>${p.count}</strong> بار</span>
                                                 </p>
-                                                <p class="card-text mb-0"><small class="text-muted">Last practiced: ${formattedDate}</small></p>
+                                                <p class="card-text mb-0"><small class="text-muted">آخرین تمرین: ${formattedDate}</small></p>
                                             </div>
                                             <div class="flex-shrink-0">
-                                                <button class="btn btn-sm btn-primary practice-this-sentence-btn" data-sentence="${sentenceAttr}" data-lang="${p.lang}" title="Practice this sentence">
-                                                    <i class="bi bi-play-circle-fill"></i> <span class="d-none d-sm-inline">Practice</span>
+                                                <button class="btn btn-sm btn-primary practice-this-sentence-btn" data-sentence="${sentenceAttr}" data-lang="${p.lang}" title="تمرین این جمله">
+                                                    <i class="bi bi-play-circle-fill"></i> <span class="d-none d-sm-inline">تمرین</span>
                                                 </button>
                                             </div>
                                         </div>
@@ -265,8 +265,8 @@ export class DataService {
                         return lastB - lastA;
                     });
                     practices.forEach(p => {
-                        const lastPracticedDate = p.practiceHistory && p.practiceHistory.length > 0 ? p.practiceHistory[p.practiceHistory.length - 1] : 'Never';
-                        const formattedDate = lastPracticedDate !== 'Never' ? lastPracticedDate.toLocaleString() : lastPracticedDate;
+                        const lastPracticedDate = p.practiceHistory && p.practiceHistory.length > 0 ? p.practiceHistory[p.practiceHistory.length - 1] : 'هرگز';
+                        const formattedDate = lastPracticedDate !== 'هرگز' ? lastPracticedDate.toLocaleString() : lastPracticedDate;
                         const truncatedSentence = this.app.utilService.truncateSentence(p.sentence);
                         const sentenceAttr = p.sentence.replace(/"/g, '&quot;');
                         const practiceHTML = `
@@ -276,13 +276,13 @@ export class DataService {
                                         <div class="flex-grow-1 me-3">
                                             <p class="card-title fw-bold mb-1">"${truncatedSentence}"</p>
                                             <p class="card-text mb-1">
-                                                <span class="badge bg-info">Practiced: <strong>${p.count}</strong> time(s)</span>
+                                                <span class="badge bg-info">تمرین شده: <strong>${p.count}</strong> بار</span>
                                             </p>
-                                            <p class="card-text mb-0"><small class="text-muted">Last practiced: ${formattedDate}</small></p>
+                                            <p class="card-text mb-0"><small class="text-muted">آخرین تمرین: ${formattedDate}</small></p>
                                         </div>
                                         <div class="flex-shrink-0">
-                                            <button class="btn btn-sm btn-primary practice-this-sentence-btn" data-sentence="${sentenceAttr}" data-lang="${p.lang}" title="Practice this sentence">
-                                                <i class="bi bi-play-circle-fill"></i> <span class="d-none d-sm-inline">Practice</span>
+                                            <button class="btn btn-sm btn-primary practice-this-sentence-btn" data-sentence="${sentenceAttr}" data-lang="${p.lang}" title="تمرین این جمله">
+                                                <i class="bi bi-play-circle-fill"></i> <span class="d-none d-sm-inline">تمرین</span>
                                             </button>
                                         </div>
                                     </div>
@@ -392,26 +392,26 @@ export class DataService {
             const myStreakModalLabel = $('#myStreakModalLabel');
             const motivationalTextEl = $('#streak-motivational-text');
             if (isFirstVisit) {
-                myStreakModalLabel.text("Welcome!");
-                motivationalTextEl.text("Ready to build your streak? Complete your first practice session today!");
+                myStreakModalLabel.text("خوش اومدی!");
+                motivationalTextEl.text("آماده‌ای رکوردت رو بسازی؟ امروز اولین جلسه تمرينت رو کامل کن!");
             } else {
                 if(currentStreak > 0){
-                    myStreakModalLabel.text("Congratulations!");
+                    myStreakModalLabel.text("آفرین!");
                     const messages = [
-                        "You're on a roll! Keep up the amazing work.",
-                        "Consistency is key. You're doing great!",
-                        "Another day, another step towards mastery.",
-                        "Look at you go! Your dedication is paying off."
+                        "داری می‌ترکونی! همین‌طوری ادامه بده.",
+                        "استمرار کلیده. داری عالی پیش می‌ری!",
+                        "یه روز دیگه، یه قدم دیگه به سمت استادی.",
+                        "ببین چطور پیش می‌ری! پشتکارت داره جواب می‌ده."
                     ];
                     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
                     motivationalTextEl.text(randomMessage);
                 } else {
-                    myStreakModalLabel.text("Welcome Back!");
+                    myStreakModalLabel.text("خوش برگشتی!");
                     const messages = [
-                        "Every master was once a beginner. Let's start a new streak today!",
-                        "Don't worry about yesterday. Today is a new opportunity to learn.",
-                        "The best time to start again is now. Let's do this!",
-                        "Falling down is part of learning. What matters is getting back up."
+                        "هر استادی یه روز مبتدی بوده. بزن امروز یه رکورد جدید شروع کنیم!",
+                        "نگران دیروز نباش. امروز یه فرصت جدیده برای یاد گرفتن.",
+                        "بهترین وقت برای شروع دوباره همینه. بزن بریم!",
+                        "افتادن بخشی از یادگیریه. مهم اینه که دوباره بلند شی."
                     ];
                     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
                     motivationalTextEl.text(randomMessage);
@@ -424,7 +424,7 @@ export class DataService {
             todayForCalendar.setHours(0, 0, 0, 0);
             const daysToShow = [-2, -1, 0, 1, 2];
 
-            const dayFormatter = new Intl.DateTimeFormat('en-US', { weekday: 'short' });
+            const dayFormatter = new Intl.DateTimeFormat('fa-IR', { weekday: 'short' });
 
             daysToShow.forEach(offset => {
                 const date = new Date(todayForCalendar);
@@ -432,8 +432,8 @@ export class DataService {
                 const dateStr = date.toISOString().split('T')[0];
 
                 let dayLabel;
-                if (offset === 0) dayLabel = 'Today';
-                else if (offset === -1) dayLabel = 'Yesterday';
+                if (offset === 0) dayLabel = 'امروز';
+                else if (offset === -1) dayLabel = 'دیروز';
                 else dayLabel = dayFormatter.format(date);
 
                 let circleClass = 'bg-dark bi bi-hourglass-top';

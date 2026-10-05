@@ -25,7 +25,7 @@ export class PracticeService {
         const rawVal = $('#sentenceInput').attr('data-val');
         this.app.sentence = (typeof rawVal === 'string' ? rawVal.trim() : '').replace(/([^\.\?\!\n])\n/g, '$1.\n');
         if (this.app.sentence.trim() === '') {
-            alert('Please enter a sentence to practice.');
+            alert('لطفاً اول یه جمله برای تمرین وارد کن.');
             return;
         }
 
@@ -165,9 +165,9 @@ export class PracticeService {
 
         if (this.app.isRecordingEnabled) {
             const listeningMessages = [
-                '👂 Listen carefully...', '🎧 Time to focus and listen!', '🔊 Pay close attention...',
-                '👀 Just listen...', '🌊 Let the sound flow in...', '🧘 Stay calm, stay focused...',
-                '📡 Receiving the signal...', '🎶 Tune in to the rhythm...'
+                '👂 خوب گوش بده...', '🎧 وقتشه تمرکز کنی و گوش بدی!', '🔊 حسابی دقت کن...',
+                '👀 فقط گوش بده...', '🌊 بذار صدا جاری بشه...', '🧘 آروم باش، متمرکز بمون...',
+                '📡 در حال دریافت سیگنال...', '🎶 با ریتم همراه شو...'
             ];
             const randomMessage = listeningMessages[Math.floor(Math.random() * listeningMessages.length)];
             $('#feedback-text').html(`<div class="listening-indicator">${randomMessage}</div>`);
@@ -176,10 +176,10 @@ export class PracticeService {
             $('#feedback-text').html('');
             if (this.app.reps > 1 && this.app.currentCount >= 0) {
                 const repetitionMessages = [
-                    `Repetition ${this.app.currentCount + 1} of ${this.app.reps}`,
-                    `Round ${this.app.currentCount + 1}/${this.app.reps}`,
-                    `Practice ${this.app.currentCount + 1} of ${this.app.reps}`,
-                    `Try ${this.app.currentCount + 1}/${this.app.reps}`
+                    `تکرار ${this.app.currentCount + 1} از ${this.app.reps}`,
+                    `دور ${this.app.currentCount + 1}/${this.app.reps}`,
+                    `تمرین ${this.app.currentCount + 1} از ${this.app.reps}`,
+                    `تلاش ${this.app.currentCount + 1}/${this.app.reps}`
                 ];
                 const randomMessage = repetitionMessages[Math.floor(Math.random() * repetitionMessages.length)];
                 $('#feedback-text').html(`<div class="repetition-indicator">${randomMessage}</div>`);
@@ -267,7 +267,7 @@ export class PracticeService {
                 }
             } else {
                 if (this.app.reps >= 2) {
-                    $('#feedback-text').html(`<div class="correct">(${this.app.currentCount} of ${this.app.reps} attempts)</div>`);
+                    $('#feedback-text').html(`<div class="correct">(تلاش ${this.app.currentCount} از ${this.app.reps})</div>`);
                 }
                 this.practiceStep();
             }
@@ -282,14 +282,14 @@ export class PracticeService {
         if (similarity >= 0.6) {
             this.app.correctCount++;
             this.app.audioService.playSound('./sounds/correct.mp3', 1, 0.6);
-            $('#feedback-text').html(`<div class="correct">Correct! (${similarityPercent}% match) - (${this.app.currentCount}/${this.app.reps})</div>`);
+            $('#feedback-text').html(`<div class="correct">آفرین! (${similarityPercent}٪ تطابق) - (${this.app.currentCount}/${this.app.reps})</div>`);
             if (this.app.currentCount >= this.app.reps) {
                 this.app.currentIndex = endIndex;
                 this.app.currentCount = 0;
             }
         } else {
             this.app.audioService.playSound('./sounds/wrong.mp3', 1, 0.6);
-            $('#feedback-text').html(`<div class="incorrect">Try again! (${similarityPercent}% match) <br>Detected: "${answer}"</div>`);
+            $('#feedback-text').html(`<div class="incorrect">دوباره تلاش کن! (${similarityPercent}٪ تطابق) <br>شنیده شد: «${answer}»</div>`);
         }
 
         this.app.saveState();
@@ -389,7 +389,7 @@ export class PracticeService {
         let accuracyText = '';
         if (this.app.practiceMode === 'check') {
             const accuracy = this.app.attempts ? Math.round((this.app.correctCount / this.app.attempts) * 100) : 100;
-            accuracyText = `<p class="lead mb-4">Your accuracy: ${accuracy}%.</p>`;
+            accuracyText = `<p class="lead mb-4">دقت تو: ${accuracy}٪.</p>`;
             ttsMsg += ` Your accuracy: ${accuracy}%.`;
         }
 
@@ -408,10 +408,10 @@ export class PracticeService {
             <div class="d-grid gap-3 col-10 col-md-6 mx-auto mt-4">
                 <button id="restartPracticeBtn" class="btn btn-primary btn-lg" onclick="app.practiceService.restartCurrentPractice(); return false;">
 
-                  <i class="bi bi-arrow-repeat"></i> Repeat this sentence
+                  <i class="bi bi-arrow-repeat"></i> تکرار همین جمله
                 </button>
                 <button class="btn btn-secondary" onclick="app.resetWithoutReload(); return false;">
-                    Try a new sentence?
+                    یه جمله جدید؟
                 </button>
             </div>
         </div>`;
