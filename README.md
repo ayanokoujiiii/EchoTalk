@@ -110,13 +110,13 @@ EchoTalk has **200+ unit tests** covering:
 | src/types.ts | 100 | 100 | 100 | 100 |
 | src/services/ai.service.ts | 97.43 | 90.38 | 100 | 97.43 |
 | src/services/audio.service.ts | 72.41 | 88.31 | 80 | 72.41 |
-| src/services/data.service.ts | 84.83 | 78.48 | 78.26 | 84.83 |
+| src/services/data.service.ts | 84.83 | 79.48 | 78.26 | 84.83 |
 | src/services/practice.service.ts | 76.75 | 77.14 | 72.72 | 76.75 |
 | src/services/prompts.service.ts | 100 | 100 | 100 | 100 |
 | src/services/ui.service.ts | 84.28 | 89.06 | 80.76 | 84.28 |
-| src/services/util.service.ts | 92.68 | 88 | 100 | 92.68 |
+| src/services/util.service.ts | 92.68 | 90 | 100 | 92.68 |
 | src/utils/string.extensions.ts | 100 | 100 | 100 | 100 |
-| All files | 80.63 | 82.95 | 83.22 | 80.63 |
+| All files | 80.63 | 83.33 | 83.22 | 80.63 |
 <!-- COVERAGE_TABLE_END -->
 
 ---
