@@ -1,5 +1,5 @@
 // Imports third-party libraries and modules.
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.rtl.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import $ from 'jquery';
@@ -160,10 +160,10 @@ export class EchoTalkApp {
     public langGeneral: string;
 
     /** The default level name to select on first load. */
-    public defaultLevelName: string = "Intermediate (B1-B2)";
+    public defaultLevelName: string = "مقدماتی (A1-A2)";
 
     /** The default category name to select on first load. */
-    public defaultCategoryName: string = "Interview";
+    public defaultCategoryName: string = "مدرسه و زندگی نوجوانی";
 
     // --- Service Instances ---
     // The application is structured using a service-oriented architecture.
@@ -324,7 +324,7 @@ export class EchoTalkApp {
                     this.uiService.setupSampleOptions();
                 } catch (error) {
                     console.error("Failed to load new language data:", error);
-                    $('#configArea').html('<div class="alert alert-danger">Failed to load language data. Please refresh the page.</div>');
+                    $('#configArea').html('<div class="alert alert-danger">بارگذاری داده زبان ناموفق بود. لطفاً صفحه رو رفرش کن.</div>');
                     return;
                 }
             }
@@ -571,7 +571,7 @@ export class EchoTalkApp {
             this.practiceService.useSample();
         } catch (error) {
             console.error("Failed to load new language data:", error);
-            $('#configArea').html('<div class="alert alert-danger">Failed to load language data. Please refresh the page.</div>');
+            $('#configArea').html('<div class="alert alert-danger">بارگذاری داده زبان ناموفق بود. لطفاً صفحه رو رفرش کن.</div>');
         }
     }
 
