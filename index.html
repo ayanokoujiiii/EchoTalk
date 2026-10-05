@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="h-100" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>EchoTalk | تمرین آفلاین شدوینگ</title>
+    <meta name="theme-color" content="#43b6fd">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-512.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <meta name="application-name" content="EchoTalk">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="EchoTalk">
+    <meta name="color-scheme" content="dark light">
+
+    <meta property="og:title" content="EchoTalk | تمرین آفلاین شدوینگ">
+    <meta property="og:description" content="EchoTalk یه اپ آفلاین و حریم‌خصوصی‌محوره برای تمرین شدوینگ، تلفظ و روانی حرف زدن.">
+    <meta name="description" content="EchoTalk یه اپ آفلاین و حریم‌خصوصی‌محوره برای تمرین شدوینگ، تلفظ و روانی حرف زدن.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="EchoTalk">
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:image" content="images/og-1200x600.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:alt" content="EchoTalk — تمرین آفلاین شدوینگ">
+    <meta property="og:image" content="images/og-720x720.jpg">
+    <meta property="og:image:width" content="720">
+    <meta property="og:image:height" content="720">
+    <meta property="og:image:alt" content="EchoTalk — تمرین آفلاین شدوینگ (مربع)">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EchoTalk | تمرین آفلاین شدوینگ">
+    <meta name="twitter:description" content="اپ آفلاین و حریم‌خصوصی‌محور شدوینگ (PWA) برای تلفظ و روانی حرف زدن.">
+    <meta name="twitter:image" content="images/og-1200x600.jpg">
+    <meta name="twitter:image:alt" content="EchoTalk — تمرین آفلاین شدوینگ">
+
+    <meta name="author" content="Ali Sol">
+    <meta name="creator" content="Ali Sol">
+    <meta property="og:see_also" content="https://alisol.ir/">
+    <meta property="og:see_also" content="https://github.com/alisolphp/">
+    <link rel="me" href="https://alisol.ir/">
+    <link rel="me" href="https://github.com/alisolphp/">
+    <link rel="me" href="https://www.linkedin.com/in/alisolphp/">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "EchoTalk",
+            "url": ["https://alisolphp.github.io/EchoTalk/","https://alisol.ir/EchoTalk/"],
+            "description": "EchoTalk is a privacy-first offline shadowing app (PWA) for pronunciation and fluency practice.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web",
+            "isAccessibleForFree": true,
+            "image": "/EchoTalk/images/og-1200x600.jpg",
+            "author": {
+                "@type": "Person",
+                "name": "Ali Sol",
+                "url": "https://alisol.ir/",
+                "sameAs": [
+                    "https://alisol.ir/",
+                    "https://github.com/alisolphp/",
+                    "https://www.linkedin.com/in/alisolphp/"
+                ]
+            },
+            "publisher": {
+                "@type": "Person",
+                "name": "Ali Sol",
+                "url": "https://alisol.ir/"
+            }
+        }
+    </script>
+
+  <script type="module" crossorigin src="/EchoTalk/assets/index-QLSh_i88.js"></script>
+  <link rel="stylesheet" crossorigin href="/EchoTalk/assets/index-BNnCL2P2.css">
+<link rel="manifest" href="/EchoTalk/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/EchoTalk/registerSW.js"></script></head>
+<body class="d-flex flex-column h-100">
+
+<div id="areaHome" class="container my-4 text-center area">
+    <img src="icons/icon-512.png" style="width: 150px; margin-bottom: 1rem;">
+    <h1 class="mb-2">EchoTalk</h1>
+    <p class="lead mb-4">فضای شخصی تو برای تمرین آفلاین شدوینگ به <span class="practicing-languages-count">1</span> زبان و ۳ سطح.</p>
+    <div class="d-flex justify-content-center align-items-center gap-2">
+        <button id="goToPracticeBtn" class="btn btn-primary btn-lg" aria-label="شروع تمرین">بزن بریم!</button>
+        <button class="btn btn-outline-warning px-2 ps-1" data-bs-toggle="modal" data-bs-target="#myStreakModal" title="رکورد روزهای من">🔥 <span class="day-streak-number">&nbsp;</span></button>
+    </div>
+    <footer class="text-end text-muted small pt-3 opacity-25">
+        <div id="app-version"></div>
+    </footer>
+</div>
+
+<div id="areaPrePractice" class="container my-4 d-none area">
+    <div class="d-flex justify-content-center align-items-center gap-2">
+        <button class="btn btn-outline-warning px-2 ps-1 position-fixed top-0 end-0 m-2" data-bs-toggle="modal" data-bs-target="#myStreakModal" title="رکورد روزهای من">🔥 <span class="day-streak-number">&nbsp;&nbsp;</span></button>
+        <h1 class="mb-0"><img src="icons/icon-512.png" style="width: 1em; margin-top: -8px;"> EchoTalk</h1>
+        <select id="headerLanguageSelect" class="form-select form-select-sm header-lang-select d-none" aria-label="انتخاب زبان"></select>
+    </div>
+    <h2 class="mb-3 text-center">تمرین آفلاین شدوینگ</h2>
+
+    <div class="row mb-2 d-none">
+        <div class="col text-center">
+            <div id="backHomeButton" class="d-none backHomeButton">
+                <button class="btn btn-outline-secondary">برگرد خونه</button>
+            </div>
+            <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#quickStartModal"><i class="bi bi-info-circle-fill"></i> شروع سریع</button>
+        </div>
+    </div>
+
+    <div id="configArea">
+        <div class="mb-3">
+            <label for="sentenceInput" class="form-label">جمله‌تو وارد کن یا
+                <button id="useSampleBtn" class="btn btn-secondary small py-0 px-2 me-1">یه نمونه تصادفی</button>:
+            </label>
+            <textarea id="sentenceInput" class="form-control" placeholder="یه جمله بنویس یا یه نمونه انتخاب کن"></textarea>
+        </div>
+        <div class="mb-3">
+            <div id="sampleSentence" class="fs-5"></div>
+            <small class="text-muted">روی هر کلمه بزن تا نقطه شروع مشخص بشه.</small>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <button id="startBtn" class="btn btn-primary d-block w-100" aria-label="شروع تمرین">
+                    <i class="bi bi-rocket-takeoff-fill"></i> شروع تمرین
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="practiceArea" class="d-none">
+        <div id="practice-ui-container">
+            <div class="mb-3">
+                <div id="fullSentence" class="fs-5 mb-2 d-none"></div>
+
+                <button id="slowBtn" style="margin-top: -0.3em;font-size: 20pt; color:#8fc9ff; text-shadow: 0px 0px 10px #59acf9;"
+                        class="btn pt-1 pb-2 px-2" title="آهسته‌تر پخش کن" aria-label="آهسته‌تر پخش کن">
+                    <i class="bi bi-play-fill"></i><sub style="margin-left: -10px; font-size: 0.5em;">🐢</sub>
+                </button>
+
+                <button id="fastBtn" style="margin-top: -0.3em;font-size: 20pt; color:#8fc9ff; text-shadow: 0px 0px 10px #59acf9; margin-left: -5px;"
+                        class="btn pt-1 pb-2 px-2" title="سریع‌تر پخش کن" aria-label="سریع‌تر پخش کن">
+                    <i class="bi bi-play-fill"></i><sub style="margin-left: -10px; font-size: 0.5em;">🐇</sub>
+                </button>
+
+                <div id="sentence-container" class="fs-3 fw-bold mb-3 d-inline"></div>
+            </div>
+            <div class="row mb-3">
+                <div class="d-inline w-auto" id="instructionText" role="status" aria-live="polite">حالا نوبت توئه. روی آیکون میکروفون کیبوردت بزن و کلمه رو بگو.</div>
+                <div class="d-inline w-auto">
+                    <button id="showTtsWarningBtn" class="btn btn-sm btn-outline-warning d-inline-block" aria-label="رفع مشکل گفتار">
+                        <i class="bi bi-volume-mute"></i> صدایی نمی‌شنوم...
+                    </button>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" id="userInput" class="form-control" placeholder="روی میکروفون کیبورد بزن" autocorrect="off" spellcheck="false" autocomplete="off" aria-autocomplete="none" aria-label="جوابتو بنویس یا با صدا بگو">
+            </div>
+            <div>
+                <button id="checkBtn" class="btn btn-success d-block w-100 py-3" aria-label="بررسی یا رد شدن">بررسی / رد شدن</button>
+            </div>
+            <div class="visualizer-container">
+                <img src="images/sound-wave-animation.webp" id="soundWaveVisualizer" alt="" aria-hidden="true">
+            </div>
+            <div id="feedback" class="mb-3" style="min-height: 60px;">
+                <canvas id="audio-visualizer" class="d-none" height="50"></canvas>
+                <div id="feedback-text" class="fs-5" role="status" aria-live="polite" aria-atomic="true"></div>
+            </div>
+        </div>
+        <div id="session-complete-container" class="d-none"></div>
+    </div>
+</div>
+
+<div id="areaOptions" class="container my-4 d-none area">
+    <h1 class="mb-4 text-center">تنظیمات <small class="text-muted">(ذخیره خودکار)</small></h1>
+
+    <div>
+        <div class="card bg-dark-subtle mb-3">
+            <div class="card-body">
+                <h6 class="card-title mb-3">محتوای تمرین رو انتخاب کن</h6>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="languageSelect" class="form-label fw-bold"><i class="bi bi-translate" style="color: #677fff;"></i> انتخاب زبان:</label>
+                        <select id="languageSelect" class="form-select"></select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="levelSelect" class="form-label fw-bold"><i class="bi bi-bar-chart-line-fill" style="color: #39bc58;"></i> سطح:</label>
+                        <select id="levelSelect" class="form-select"></select>
+                    </div>
+                    <div class="col">
+                        <label for="categorySelect" class="form-label fw-bold"><i class="bi bi-folder-fill" style="color: #ffcb00;"></i> دسته‌بندی:</label>
+                        <select id="categorySelect" class="form-select"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card bg-dark-subtle mb-3">
+            <div class="card-body">
+                <h6 class="card-title mb-3">تنظیمات تمرین</h6>
+
+                <div class="mb-3">
+                    <label for="practiceModeSelect" class="form-label fw-bold">حالت تمرین:</label>
+                    <select id="practiceModeSelect" class="form-select">
+                        <option value="skip">🎧 فقط رد شدن (گوش بده و تکرار کن)</option>
+                        <option value="auto-skip">🕒 رد شدن خودکار (تمرین در زمان مشخص)</option>
+                        <option value="check">🎤 حالت بررسی (با میکروفون کیبورد)</option>
+                    </select>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="speechRateSelect" class="form-label fw-bold">سرعت گفتار:</label>
+                        <select id="speechRateSelect" class="form-select">
+                            <option value="0">🪄 خودکار (پیشنهاد می‌شود)</option>
+                            <option value="0.6">🐢 آهسته</option>
+                            <option value="0.8">🧍 متوسط</option>
+                            <option value="1">🚶 معمولی</option>
+                            <option value="1.2">🏃 سریع</option>
+                            <option value="1.4">🚗 خیلی سریع</option>
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <label for="repsSelect" class="form-label fw-bold">تعداد تکرار:</label>
+                        <select id="repsSelect" class="form-select"></select>
+                    </div>
+                </div>
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="recordToggle">
+                    <label class="form-check-label" for="recordToggle"><i class="bi bi-mic-fill" style="color: #ffb300;"></i> <strong>صدام رو ضبط کن</strong> تا بعداً مقایسه کنم (کاملاً روی همین گوشی)</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-danger p-0">
+            <details>
+                <summary class="card-title text-danger small p-2 m-0">ناحیه خطر</summary>
+                <div class="card-body">
+                    <p class="card-text small text-muted">این کار همه داده‌ها و ضبط‌های تو رو برای همیشه پاک می‌کنه.</p>
+                    <button id="resetBtn" class="btn btn-danger w-100">ریست اپ</button>
+                </div>
+            </details>
+        </div>
+
+        <div class="modal-footer mt-3">
+            <button type="button" class="btn btn-success opacity-50 backHomeButton">
+                <i class="bi bi-check-square-fill"></i>
+                <small>خودکار ذخیره می‌شه</small>
+            </button>
+            <button type="button" class="btn btn-primary backHomeButton ms-2">
+                <i class="bi bi-play"></i>
+                برو به تمرین</button>
+        </div>
+    </div>
+
+</div>
+
+<div id="areaForYou" class="container my-4 d-none area">
+    <h1 class="mb-4 text-center">برای تو</h1>
+    <div class="list-group">
+        <a href="#" id="showRecordingsBtn" class="list-group-item list-group-item-action py-3">
+            <i class="bi bi-file-earmark-music" style="color: #ff00d7;"></i>
+            ضبط‌های من
+        </a>
+        <a href="#" id="showPracticesBtn" class="list-group-item list-group-item-action py-3">
+            <i class="bi bi-journal-check" style="color: #78ff65;"></i>
+            تمرین‌های من
+        </a>
+        <a href="#" id="showProgressBtn" class="list-group-item list-group-item-action d-none">
+            <i class="bi bi-bar-chart-line-fill"></i>
+            پیشرفت من
+        </a>
+        <a href="#" id="showStreakBtn" class="list-group-item list-group-item-action py-3" data-bs-toggle="modal" data-bs-target="#myStreakModal">
+            <i class="bi bi-fire" style="color: #ff8f3d;"></i>
+            رکورد روزهای من
+        </a>
+    </div>
+</div>
+
+<nav class="nav-bottom">
+    <div class="nav-items">
+        <a href="#" id="navHome" class="nav-item active">
+            <i class="bi bi-house-fill"></i>
+            <span>خونه</span>
+        </a>
+        <a href="#" id="navHelp" class="nav-item" data-bs-toggle="modal" data-bs-target="#quickStartModal">
+            <i class="bi bi-question-circle-fill"></i>
+            <span>راهنما</span>
+        </a>
+        <a href="#" id="navPrePractice" class="nav-item">
+            <i class="bi bi-mic-fill"></i>
+            <span>تمرین</span>
+        </a>
+        <a href="#" id="navOptions" class="nav-item">
+            <i class="bi bi-sliders"></i>
+            <span>تنظیمات</span>
+        </a>
+        <a href="#" id="navForYou" class="nav-item">
+            <i class="bi bi-person-fill"></i>
+            <span>برای تو</span>
+        </a>
+    </div>
+</nav>
+
+<div class="modal fade" id="quickStartModal" tabindex="-1" aria-labelledby="quickStartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="quickStartModalLabel">به EchoTalk خوش اومدی!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            <div class="modal-body">
+
+                <h5>شروع در ۲ قدم</h5>
+                <ol>
+                    <li><strong>یه جمله اضافه کن:</strong> خودت بنویس، یا <strong>«یه نمونه»</strong> رو بزن تا با یه جمله مناسب سطحت شروع کنی.</li>
+                    <li><strong>شروع تمرین:</strong> دکمه «شروع تمرین» رو بزن.</li>
+                </ol>
+
+                <div class="alert alert-info d-flex align-items-center mt-3" role="alert">
+                    <i class="bi bi-info-circle-fill flex-shrink-0 me-2" aria-hidden="true"></i>
+                    <div>
+                        کلید شدوینگ، تمرکز و ثباته. می‌تونی تعداد تکرار و سرعت رو توی <strong>تنظیمات</strong> عوض کنی.
+                    </div>
+                </div>
+
+                <div class="text-center my-4">
+                    <a class="backHomeButton btn btn-primary" data-bs-dismiss="modal">
+                        <i class="bi bi-check-square"></i> فهمیدم، بزن بریم!
+                    </a>
+                </div>
+
+                <hr>
+
+                <div class="text-center mb-3">
+                    <small class="text-muted">می‌خوای بیشتر بدونی؟ بخش‌های زیر رو باز کن.</small>
+                </div>
+
+                <div class="accordion" id="moreInfoAccordion">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                «شدوینگ» چیه؟
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#moreInfoAccordion">
+                            <div class="accordion-body">
+                                <p>یه روش قدرتمند برای قوی کردن تلفظ و روانی حرف زدنه. به یه عبارت گوش می‌دی و سعی می‌کنی همون لحظه و دقیق تکرارش کنی. این ویدیوی کوتاه نشونت می‌ده چطوری:</p>
+                                <div class="text-center mb-4">
+                                    <button class="btn btn-outline-danger" id="loadVideoBtn">
+                                        <i class="bi bi-youtube"></i> تماشای معرفی شدوینگ
+                                    </button>
+                                </div>
+                                <div id="videoContainer" class="ratio ratio-16x9 d-none"></div>
+                                <script>
+                                    // Script for loading video remains the same
+                                    document.getElementById("loadVideoBtn").addEventListener("click", function() {
+                                        const container = document.getElementById("videoContainer");
+                                        if (!container.querySelector("iframe")) {
+                                            container.innerHTML = `<iframe src="https://www.youtube.com/embed/KDpfN0TA4c4?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                                        }
+                                        container.classList.remove("d-none");
+                                        container.scrollIntoView({ behavior: "smooth" });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                چرا EchoTalk؟
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#moreInfoAccordion">
+                            <div class="accordion-body">
+                                <p>EchoTalk ابزار شخصی تو برای استاد شدن توی شدوینگه. با حریم خصوصی در اولویت ساخته شده:</p>
+                                <ul>
+                                    <li><strong>کاملاً آفلاین کار می‌کنه:</strong> بعد از اولین بار باز شدن، دیگه اینترنت لازم نداره.</li>
+                                    <li><strong>داده‌هات محفوظن:</strong> همه تمرین‌ها و ضبط‌هات روی گوشی خودت می‌مونه و هیچ‌وقت به هیچ سروری فرستاده نمی‌شه.</li>
+                                    <li><strong>قابل نصب روی گوشیت:</strong> EchoTalk رو مثل یه اپ معمولی به صفحه اصلی گوشیت اضافه کن تا هر وقت خواستی دم دست باشه.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                قابلیت‌های قدرتمند رو بشناس
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#moreInfoAccordion">
+                            <div class="accordion-body">
+                                <h5>🧠 حالت‌های هوشمند تمرین و یادگیری</h5>
+                                <ul>
+                                    <li><strong>حالت رد شدن خودکار:</strong> بدون دست تمرین کن! بعد از پخش هر عبارت، اپ صبر می‌کنه تا تو تکرار کنی، بعد خودش می‌ره سراغ بعدی.</li>
+                                    <li><strong>تنظیمات هوشمند خودکار:</strong> اپ با توجه به سابقه تمرينت، تعداد تکرار و سرعت پخش رو هوشمندانه تنظیم می‌کنه.</li>
+                                    <li><strong>تقسیم هوشمند جمله:</strong> جمله‌ها رو معنادار تکه‌تکه می‌کنه تا تمرین راحت‌تر بشه.</li>
+                                </ul>
+
+                                <h5>🎨 ظاهر مدرن</h5>
+                                <ul>
+                                    <li><strong>تعامل پیشرفته با کلمه:</strong> روی هر کلمه بزن تا ترجمه، تلفظ و تحلیل هوش مصنوعی رو ببینی.</li>
+                                    <li><strong>رکورد روزهای تمرین:</strong> با دنبال کردن روزهای پشت سر هم تمرین، انگیزه‌ت رو حفظ کن.</li>
+                                    <li><strong>تاریخچه «تمرین‌های من»:</strong> جمله‌های قبلی رو مرور کن و سریع برگرد سر تمرین.</li>
+                                    <li><strong>مرور ضبط‌ها:</strong> به تلفظ خودت گوش بده تا پیشرفتت رو ببینی.</li>
+                                </ul>
+
+                                <h5>♿ دسترس‌پذیری</h5>
+                                <ul>
+                                    <li><strong>سرعت قابل تنظیم گفتار:</strong> سرعت پخش رو به دلخواه تنظیم کن.</li>
+                                    <li><strong>کار با کیبورد:</strong> کل تمرین رو بدون موس انجام بده.</li>
+                                    <li><strong>سازگار با صفحه‌خوان:</strong> با فکر کردن به دسترس‌پذیری طراحی شده.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                قوانین و اطلاعات پروژه
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#moreInfoAccordion">
+                            <div class="accordion-body">
+                                <div class="alert alert-info d-flex align-items-center" role="alert">
+                                    <i class="bi bi-lightbulb-fill flex-shrink-0 me-2"></i>
+                                    <div>
+                                        <strong>نکته حرفه‌ای:</strong> برای بهترین عملکرد، اینترنتت رو خاموش کن. اینجوری اپ از موتورهای گفتار سریع‌تر و داخلی گوشیت استفاده می‌کنه.
+                                    </div>
+                                </div>
+                                <hr>
+                                <p class="small text-muted">
+                                    این پروژه با لایسنس MIT متن‌بازه. با استفاده از این اپ، مسئول کارهای خودتی، مخصوصاً وقتی از قابلیت‌های هوش مصنوعی استفاده می‌کنی. می‌تونی سورس‌کد رو توی <a href="https://github.com/alisolphp/EchoTalk" target="_blank" rel="noopener noreferrer">گیت‌هاب</a> ببینی.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="wordActionsModal" tabindex="-1" aria-labelledby="wordActionsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="wordActionsModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-grid mb-3">
+                    <button id="playWordBtn" class="btn btn-primary"><i class="bi bi-play-fill"></i> پخش دوباره کلمه</button>
+                </div>
+
+                <div class="accordion" id="wordActionsAccordion">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingGoogle">
+                            <button class="accordion-button collapsed online-only-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGoogle" aria-expanded="false" aria-controls="collapseGoogle">
+                                <i class="bi bi-google me-2"></i> اتصال‌های گوگل
+                                <i class="bi bi-wifi-off text-danger ms-auto me-2" title="نیاز به اینترنت داره"></i>
+                            </button>
+                        </h2>
+                        <div id="collapseGoogle" class="accordion-collapse collapse" aria-labelledby="headingGoogle" data-bs-parent="#wordActionsAccordion">
+                            <div class="accordion-body p-2">
+                                <div class="d-grid gap-2">
+                                    <a id="searchPronunciationLink" href="#" target="_blank" class="btn btn-outline-info btn-sm">
+                                        <i class="bi bi-soundwave me-2"></i>طرز تلفظ
+                                    </a>
+                                    <a id="searchExamplesLink" href="#" target="_blank" class="btn btn-outline-warning btn-sm">
+                                        <i class="bi bi-blockquote-left me-2"></i>مثال‌های کاربردی
+                                    </a>
+                                    <a id="searchMeaningLink" href="#" target="_blank" class="btn btn-outline-success btn-sm">
+                                        <i class="bi bi-book me-2"></i>معنی کلمه
+                                    </a>
+                                    <a id="searchSentenceMeaningLink" href="#" class="btn btn-outline-light btn-sm">
+                                        <i class="bi bi-translate me-2"></i>معنی جمله
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingAI">
+                            <button class="accordion-button collapsed online-only-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAI" aria-expanded="false" aria-controls="collapseAI">
+                                <i class="bi bi-robot me-2"></i> اتصال‌های هوش مصنوعی
+                                <i class="bi bi-wifi-off text-danger ms-auto me-2" title="نیاز به اینترنت داره"></i>
+                            </button>
+                        </h2>
+                        <div id="collapseAI" class="accordion-collapse collapse" aria-labelledby="headingAI" data-bs-parent="#wordActionsAccordion">
+                            <div class="accordion-body p-2">
+                                <div class="d-grid gap-2">
+                                    <a id="translateWithGptBtn" href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-translate me-1"></i> ترجمه عمیق هوش مصنوعی</a>
+                                    <a id="grammarAnalysisBtn" href="#" class="btn btn-outline-success btn-sm"><i class="bi bi-diagram-3 me-1"></i> تحلیل گرامر با هوش مصنوعی</a>
+                                    <a id="vocabExpansionBtn" href="#" class="btn btn-outline-warning btn-sm"><i class="bi bi-stack me-1"></i> گسترش لغت با هوش مصنوعی</a>
+                                    <a id="contextNuanceBtn" href="#" class="btn btn-outline-info btn-sm"><i class="bi bi-chat-quote me-1"></i> بافت و ظرافت معنا با هوش مصنوعی</a>
+                                    <a id="creativePracticeBtn" href="#" class="btn btn-outline-danger btn-sm"><i class="bi bi-lightbulb me-1"></i> تمرین خلاقانه با هوش مصنوعی</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="recordingsModal" tabindex="-1" aria-labelledby="recordingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="recordingsModalLabel">ضبط‌های من</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion" id="recordingsList">
+                    <p class="text-center text-muted">هنوز ضبطی نیست. «ضبط صدای من» رو فعال کن و تمرین رو شروع کن!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="practicesModal" tabindex="-1" aria-labelledby="practicesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="practicesModalLabel"><i class="bi bi-journal-check me-2"></i>تمرین‌های من</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            <div class="modal-body">
+                <div id="practicesList">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ttsWarningModal" tabindex="-1" aria-labelledby="ttsWarningModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ttsWarningModalLabel"><i class="bi bi-exclamation-triangle-fill text-warning"></i> مشکل موتور گفتار: صدا پیدا نشد یا درست نیست</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            <div class="modal-body">
+                <p>به نظر می‌رسه موتور تبدیل متن به گفتار (TTS) برای زبان <strong class="current-language-general-name">انگلیسی</strong> روی گوشیت درست تنظیم نشده. ممکنه صدا نصب نباشه یا تلفظش درست نباشه.</p>
+                <p>ممکنه صدایی نشنوی، یا صدا رباتیک باشه یا لهجه اشتباه داشته باشه. برای بهترین تجربه، پیشنهاد می‌شه موتور صوتی درست این زبان رو از تنظیمات گوشیت نصب کنی.</p>
+                <hr>
+                <div class="mt-3">
+                    <p class="fw-bold">راه‌حل پیشنهادی:</p>
+                    <p>برای بهترین تجربه آفلاین، لطفاً موتور گفتار زبان <strong class="current-language-general-name">انگلیسی</strong> رو از تنظیمات گوشیت نصب کن:</p>
+
+                    <details class="card bg-dark-subtle border-secondary mb-2">
+                        <summary class="card-title fw-bold p-2" style="cursor: pointer; list-style: none;">
+                            › روی موبایل
+                        </summary>
+                        <div class="card-body pt-0">
+                            <p>تنظیمات <code>دسترس‌پذیری</code> یا <code>تبدیل متن به گفتار</code> گوشیت رو چک کن.</p>
+                            <p class="small text-muted mt-2"><strong>نکته:</strong> ممکنه بعد از نصب لازم باشه مرورگرت رو دوباره باز کنی.</p>
+                        </div>
+                    </details>
+
+                    <details class="card bg-dark-subtle border-secondary mb-2">
+                        <summary class="card-title fw-bold p-2" style="cursor: pointer; list-style: none;">
+                            › روی ویندوز
+                        </summary>
+                        <div class="card-body pt-0">
+                            <p>برو به <code>تنظیمات &gt; زمان و زبان &gt; گفتار</code> و «افزودن صداها» رو بزن.</p>
+                            <p class="small text-muted mt-2"><strong>نکته:</strong> ممکنه بعد از نصب لازم باشه مرورگرت رو دوباره باز کنی.</p>
+                        </div>
+                    </details>
+
+                    <details class="card bg-dark-subtle border-secondary">
+                        <summary class="card-title fw-bold p-2" style="cursor: pointer; list-style: none;">
+                            › روی مک
+                        </summary>
+                        <div class="card-body pt-0">
+                            <p>برو به <code>تنظیمات سیستم &gt; دسترس‌پذیری &gt; محتوای گفتاری</code> و «مدیریت صداها...» رو انتخاب کن.</p>
+                            <p class="small text-muted mt-2"><strong>نکته:</strong> ممکنه بعد از نصب لازم باشه مرورگرت رو دوباره باز کنی.</p>
+                        </div>
+                    </details>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">فهمیدم</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="aiInstructionsModal" tabindex="-1" aria-labelledby="aiInstructionsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="aiInstructionsModalLabel"><i class="bi bi-robot text-info"></i> راهنمای تحلیل هوش مصنوعی</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            <div class="modal-body" id="aiInstructionsModalBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">باشه</button>
+                <a href="https://gemini.google.com/" target="_blank" class="btn btn-primary">برو به Gemini <i class="bi bi-box-arrow-up-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmationModalLabel"><i class="bi bi-check-circle-fill text-success"></i> پرامپت کپی شد!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            <div class="modal-body">
+                <p>حالا پرامپت رو توی تب جدید بچسبون و از تحلیل هوش مصنوعی لذت ببر.</p>
+                <p class="small text-muted mb-0">برای ادامه، دکمه «برو به ChatGPT» رو بزن.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">لغو</button>
+                <button type="button" class="btn btn-primary" id="confirmGoToGptBtn">بزن بریم به ChatGPT</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myStreakModal" tabindex="-1" aria-labelledby="myStreakModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center" id="streak-modal-content">
+
+            <div class="confetti-container"></div>
+
+            <div class="modal-body p-4">
+                <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"
+                        aria-label="بستن"></button>
+                <div class="streak-counter"><i class="bi bi-fire"></i> <span id="streakDaysHeader">0</span></div>
+                <div class="streak-badge" id="streak-trophy-badge">
+                    <i class="bi bi-trophy-fill"></i>
+                </div>
+                <h1 id="myStreakModalLabel" class="h4">آفرین!</h1>
+                <p id="streak-motivational-text" class="mb-3">داری می‌ترکونی! همین‌طوری ادامه بده.</p>
+
+                <div class="d-flex justify-content-around my-4">
+                    <div class="stat-item">
+                        <div id="streakDays" class="stat-value">0</div>
+                        <div class="stat-label">روز پشت سر هم</div>
+                    </div>
+                    <div class="stat-item practiceRelated-stat" style="cursor:pointer;" data-bs-dismiss="modal">
+                        <div id="streakPractices" class="stat-value">0</div>
+                        <div class="stat-label">کل تمرین‌ها</div>
+                    </div>
+                    <div class="stat-item practiceRelated-stat" style="cursor:pointer;" data-bs-dismiss="modal">
+                        <div id="streakSentences" class="stat-value">0</div>
+                        <div class="stat-label">جمله‌ها</div>
+                    </div>
+                </div>
+
+                <div id="streakCalendar" class="d-flex justify-content-center gap-2 my-4">
+                </div>
+
+                <button id="continueLearningBtn" class="btn btn-primary w-100 mt-4" data-bs-dismiss="modal"><i class="bi bi-play-fill me-2"></i>ادامه تمرین</button>
+
+                <p class="small text-muted fst-italic mt-4">
+                    با EchoTalk، اپ رایگان و آفلاین شدوینگ، تلفظت رو استاد شو.
+                    پیشرفتت رو به اشتراک بذار و به بقیه انگیزه بده!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button id="installBtn" class="btn btn-outline-primary d-none">نصب اپ</button>
+
+</body>
+</html>
