@@ -1,10 +1,39 @@
 {
   "levels": [
     {
-      "name": "Beginner (A1-A2)",
+      "name": "مقدماتی (A1-A2)",
       "categories": [
         {
-          "name": "Everyday Life & Socializing",
+          "name": "مدرسه و زندگی نوجوانی",
+          "sentences": [
+            "My school starts at eight in the morning.",
+            "I love my English teacher.",
+            "My best friend sits next to me in class.",
+            "We have math on Mondays and Wednesdays.",
+            "I do my homework right after lunch.",
+            "My backpack is heavy today.",
+            "I like to draw in my notebook.",
+            "We play football after school.",
+            "My sister helps me with my lessons.",
+            "I want to learn English very well.",
+            "Reading books is my favorite hobby.",
+            "I listen to music on my way home.",
+            "My classroom is big and bright.",
+            "We have a test tomorrow morning.",
+            "I always eat breakfast before school.",
+            "My friends and I laugh a lot together.",
+            "I keep my room clean and tidy.",
+            "Weekends are the best days of the week.",
+            "I want to be a doctor in the future.",
+            "My mom cooks delicious food.",
+            "I brush my teeth every night.",
+            "We watch a movie on Friday nights.",
+            "I am happy when I learn new words.",
+            "Practice makes everything easier."
+          ]
+        },
+        {
+          "name": "زندگی روزمره و معاشرت",
           "sentences": [
             "Hello, how are you doing this fine morning?",
             "I am doing great, thanks for asking about me.",
@@ -34,7 +63,7 @@
           ]
         },
         {
-          "name": "Going Out & Services",
+          "name": "بیرون رفتن و خدمات",
           "sentences": [
             "Could you please show me where the nearest train station is?",
             "I would like to order a large black coffee with no sugar, please.",
@@ -65,10 +94,10 @@
       ]
     },
     {
-      "name": "Intermediate (B1-B2)",
+      "name": "متوسط (B1-B2)",
       "categories": [
         {
-          "name": "Interview",
+          "name": "مصاحبه",
           "sentences": [
             "I'm a software architect with extensive experience in building scalable, resilient, and business-driven web platforms.",
             "I believe in aligning engineering decisions with measurable business outcomes, like revenue growth or significant cost reduction.",
@@ -120,7 +149,7 @@
           ]
         },
         {
-          "name": "Live Coding",
+          "name": "کدنویسی زنده",
           "sentences": [
             "Okay, let me first read the problem carefully to make sure I fully understand the requirements.",
             "My initial thought is to start with a brute-force solution, just to get a working baseline.",
@@ -145,7 +174,7 @@
           ]
         },
         {
-          "name": "Professional Communication",
+          "name": "ارتباطات کاری",
           "sentences": [
             "We need to schedule a team meeting for early next week to discuss the quarterly results.",
             "Could you please send me the complete financial report by the end of the business day?",
@@ -174,7 +203,7 @@
           ]
         },
         {
-          "name": "Creative Language & Storytelling",
+          "name": "زبان خلاقانه و قصه‌گویی",
           "sentences": [
             "After a few tries, learning the new software was a piece of cake for her.",
             "You've practiced a lot, so just go out there and break a leg on your presentation tomorrow!",
@@ -201,7 +230,7 @@
           ]
         },
         {
-          "name": "Health & Wellness",
+          "name": "سلامت و تندرستی",
           "sentences": [
             "I have a persistent headache and I've been feeling dizzy all day.",
             "I would like to make an appointment with the doctor for my annual check-up.",
@@ -227,7 +256,7 @@
           ]
         },
         {
-          "name": "Famous TV Show Lines",
+          "name": "دیالوگ‌های معروف سریال‌ها",
           "sentences": [
             "Have you tried turning it off and on again?",
             "Mornings are for coffee and contemplation.",
@@ -254,10 +283,10 @@
       ]
     },
     {
-      "name": "Advanced (C1-C2)",
+      "name": "پیشرفته (C1-C2)",
       "categories": [
         {
-          "name": "Formal & Academic",
+          "name": "رسمی و آکادمیک",
           "sentences": [
             "The current geopolitical landscape has demonstrably undergone a significant and likely irreversible transformation in recent decades.",
             "This particular research methodology directly and fundamentally challenges the conventional wisdom regarding the subject of cognitive biases.",
@@ -282,7 +311,7 @@
           ]
         },
         {
-          "name": "Complex Topics & Debate",
+          "name": "موضوعات پیچیده و مناظره",
           "sentences": [
             "The advent of general artificial intelligence poses a legitimate existential threat to modern cryptographic standards, potentially rendering all current encryption methods obsolete overnight. This alarming possibility necessitates a proactive and global collaborative effort to develop quantum-resistant algorithms before a major global security crisis emerges.",
             "A nuanced and multifaceted analysis of the socio-economic factors influencing contemporary urban development is imperative for effective, just, and equitable policymaking. Simply focusing on raw economic growth without rigorously considering its impact on social disparity and environmental sustainability often leads to intractable long-term problems that are immensely difficult and costly to reverse.",
@@ -307,7 +336,7 @@
           ]
         },
         {
-          "name": "Persuasion & Negotiation",
+          "name": "ترغیب و مذاکره",
           "sentences": [
             "While I completely understand and genuinely respect your current position, I would strongly urge you to consider the clear strategic advantages from a more long-term and holistic perspective.",
             "I firmly and confidently believe that we can find a mutually beneficial and workable arrangement that adequately addresses both of our primary and most critical concerns.",
@@ -332,7 +361,7 @@
           ]
         },
         {
-          "name": "Figurative & Nuanced Language",
+          "name": "زبان کنایی و ظریف",
           "sentences": [
             "The CEO's public speech on the company's future was a masterclass in deliberate and calculated ambiguity, leaving everyone in the room to read between the lines for his true intentions.",
             "His argument, while presented with eloquence and a great deal of persuasive charisma, was ultimately built on a fragile foundation of sand that completely collapsed under the slightest bit of critical scrutiny.",
@@ -357,7 +386,7 @@
           ]
         },
         {
-          "name": "Social & Cultural Issues",
+          "name": "مسائل اجتماعی و فرهنگی",
           "sentences": [
             "The ongoing conversation around mental health has become significantly less stigmatized in recent years, though equitable access to quality care remains a major systemic barrier for many individuals. This palpable shift in public perception is a positive and necessary first step, but it must be followed by concrete and well-funded policy changes.",
             "The process of gentrification often leads to a form of cultural displacement where the original, long-term residents of a neighborhood can no longer afford to live there due to rising costs. This complex phenomenon raises difficult questions about urban development, community identity, and ever-widening economic inequality.",
@@ -382,7 +411,7 @@
           ]
         },
         {
-          "name": "Constructive Criticism",
+          "name": "نقد سازنده",
           "sentences": [
             "The overall concept and narrative of your presentation are exceptionally compelling, but I believe the core message could be substantially strengthened by including more specific and relevant data points to support your central claims. For instance, adding the quarterly growth statistics would make your final argument much more persuasive and difficult to refute.",
             "I truly appreciate the immense amount of hard work and dedication you've clearly put into this comprehensive report. As a constructive suggestion for the next version, perhaps we could organize the sections with clearer, more descriptive headings and a detailed table of contents. This small change would significantly improve overall readability and navigation for the executive team.",
@@ -407,7 +436,7 @@
           ]
         },
         {
-          "name": "Technology & The Future",
+          "name": "تکنولوژی و آینده",
           "sentences": [
             "The rapid advancement of artificial intelligence is poised to automate many industries, raising important questions about the future of work and the potential need for universal basic income. Society must prepare for a significant economic shift and invest heavily in retraining programs for displaced workers.",
             "Blockchain technology has the potential to revolutionize more than just finance; its decentralized, immutable, and transparent nature could be applied to voting systems, supply chain management, and intellectual property rights, fostering a new era of trust and accountability in digital transactions.",
