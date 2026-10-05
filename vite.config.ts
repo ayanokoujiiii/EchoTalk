@@ -26,7 +26,8 @@ const getBuildInfo = () => {
 const { buildDate, commitUrl } = getBuildInfo();
 
 export default defineConfig({
-    base: '/EchoTalk/',
+    // On Vercel the app is served from the domain root; on GitHub Pages from /EchoTalk/
+    base: process.env.VERCEL ? '/' : '/EchoTalk/',
     root: 'src',
     publicDir: '../public',
     define: {
@@ -44,12 +45,13 @@ export default defineConfig({
             manifest: {
                 name: 'EchoTalk',
                 short_name: 'EchoTalk',
-                description: 'An offline browser-based language training app using Shadowing technique with sentence segmentation, audio recording, and user review features.',
+                description: 'اپ آفلاین تمرین شدوینگ برای تقویت تلفظ و روانی حرف زدن به انگلیسی.',
                 start_url: '.',
                 display: 'standalone',
                 background_color: '#212529',
                 theme_color: '#43b6fd',
-                lang: 'en',
+                lang: 'fa',
+                dir: 'rtl',
                 scope: './',
                 icons: [
                     { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
@@ -68,6 +70,18 @@ export default defineConfig({
                             expiration: {
                                 maxEntries: 3,
                                 maxAgeSeconds: 30 * 86400,
+                            },
+                        },
+                    },
+                    {
+                        // Persian font (Vazirmatn) — cached after first load so the app stays offline-capable
+                        urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\/.*/i,
+                        handler: 'CacheFirst',
+                        options: {
+                            cacheName: 'google-fonts',
+                            expiration: {
+                                maxEntries: 20,
+                                maxAgeSeconds: 365 * 86400,
                             },
                         },
                     },
