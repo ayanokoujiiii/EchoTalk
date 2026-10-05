@@ -89,7 +89,7 @@ describe('Recordings Modal Logic', () => {
         await app.dataService.displayRecordings();
 
         const listHtml = $('#recordingsList').html();
-        expect(listHtml).toContain('No recordings found yet.');
+        expect(listHtml).toContain('هنوز ضبطی نیست.');
     });
 
     it('should display a list of recordings if the database has entries', async () => {

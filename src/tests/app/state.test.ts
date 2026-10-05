@@ -8,31 +8,29 @@ describe('State Management and Event Handlers', () => {
     beforeEach(async () => {
         vi.useFakeTimers();
         vi.spyOn($, 'getJSON').mockResolvedValue({
-            "levels": [
+                        "levels": [
                 {
-                    "name": "Beginner (A1-A2)",
+                    "name": "مقدماتی (A1-A2)",
 
-                    "categories": []
-                },
-                {
-                    "name": "Intermediate (B1-B2)",
                     "categories": [
-
                         {
-                            "name": "Interview",
+                            "name": "مدرسه و زندگی نوجوانی",
                             "sentences": [
-                                "I'm a software architect with extensive experience in building scalable, resilient, and business-driven web platforms."
+                                "My school starts at eight in the morning."
                             ]
                         }
                     ]
-
                 },
                 {
-                    "name": "Advanced (C1-C2)",
+                    "name": "متوسط (B1-B2)",
+                    "categories": []
+                },
+                {
+                    "name": "پیشرفته (C1-C2)",
                     "categories": []
                 }
             ]
-        });
+});
 
         localStorage.clear();
         app = new EchoTalkApp();
@@ -91,7 +89,7 @@ describe('State Management and Event Handlers', () => {
         const newSentence = app.sentence;
 
         const expectedSentences = [
-            "I'm a software architect with extensive experience in building scalable, resilient, and business-driven web platforms."
+            "My school starts at eight in the morning."
         ];
         expect(expectedSentences).toContain(newSentence);
 

@@ -10,33 +10,29 @@ describe('Practice Logic', () => {
     beforeEach(async () => {
         vi.useFakeTimers(); // Use fake timers to control async operations
         vi.spyOn($, 'getJSON').mockResolvedValue({
-            "levels": [
+                        "levels": [
                 {
-                    "name": "Beginner (A1-A2)",
+                    "name": "مقدماتی (A1-A2)",
 
-                    "categories": []
-                },
-                {
-                    "name": "Intermediate (B1-B2)",
                     "categories": [
-
                         {
-                            "name": "Interview",
+                            "name": "مدرسه و زندگی نوجوانی",
                             "sentences": [
-
-                                "I'm a software architect with extensive experience in building scalable, resilient, and business-driven web platforms."
+                                "My school starts at eight in the morning."
                             ]
                         }
                     ]
-
                 },
                 {
-                    "name": "Advanced (C1-C2)",
+                    "name": "متوسط (B1-B2)",
+                    "categories": []
+                },
+                {
+                    "name": "پیشرفته (C1-C2)",
                     "categories": []
                 }
             ]
-
-        });
+});
 
         localStorage.clear();
         app = new EchoTalkApp();
@@ -162,7 +158,7 @@ describe('Practice Logic', () => {
         await app.practiceService.checkAnswer();
 
         expect(app.audioService.playSound).toHaveBeenCalledWith('./sounds/wrong.mp3', 1, 0.6);
-        expect($('#feedback').html()).toContain('Try again!');
+        expect($('#feedback').html()).toContain('دوباره تلاش کن!');
 
         vi.useRealTimers();
     });
@@ -354,7 +350,7 @@ describe('Practice Logic', () => {
 
             await app.practiceService.startPractice();
 
-            expect(alertSpy).toHaveBeenCalledWith('Please enter a sentence to practice.');
+            expect(alertSpy).toHaveBeenCalledWith('لطفاً اول یه جمله برای تمرین وارد کن.');
         });
 
         // This test ensures that when repetition is set to 'Auto' (value 0), the actual repetition count
